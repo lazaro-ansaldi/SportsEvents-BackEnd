@@ -4,7 +4,10 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/sports');
+mongoose.connect('mongodb://localhost/sports', {
+    useMongoClient:true
+});
+
 var dbConection = mongoose.connection;
 
 app.get("/", function(req, res){

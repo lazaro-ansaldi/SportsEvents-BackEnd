@@ -1,18 +1,18 @@
-var mongoose = required('mongoose');
+var mongoose = require('mongoose');
 
 //Define the collection schema
-var teamSchema = mongoose.schema({
+var teamSchema = mongoose.Schema({
     name:{
-        type:string,
-        required:true
+        type: String,
+        required: true
     },
     createDate:{
-        type:Date,
-        default:Date.now
+        type: Date,
+        default: Date.now
     },
     shortName:{
-        type:string,
-        required:false
+        type: String,
+        required: false
     }
 })
 

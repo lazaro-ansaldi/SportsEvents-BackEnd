@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var teams = require('modules/teams/teamsDB');
+var teams = require('./modules/teams/teamsDB.js');
 
 mongoose.connect('mongodb://localhost/sports', {
     useMongoClient:true

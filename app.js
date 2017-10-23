@@ -1,16 +1,11 @@
 var express = require('express');
 var app = express();
-
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 
+var dbConection = require('./db/connection');
 var teams = require('./modules/teams/teamsDB.js');
-
-mongoose.connect('mongodb://localhost/sports', {
-    useMongoClient:true
-});
-
-var dbConection = mongoose.connection;
+//Connect to db once
+dbConection.Connection;
 
 app.get("/", function(req, res){
     res.send("Home Page");

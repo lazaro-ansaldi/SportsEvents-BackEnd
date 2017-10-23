@@ -1,0 +1,24 @@
+{
+  "name": "event-statistics",
+  "version": "1.0.0",
+  "description": "simple web api application to manage sports event statistics",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express":"*",
+    "body-parser":"*",
+    "mongoose":"*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazaro94/SportsEvents-BackEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lazaro94/SportsEvents-BackEnd/issues"
+  },
+  "homepage": "https://github.com/lazaro94/SportsEvents-BackEnd#readme"
+}

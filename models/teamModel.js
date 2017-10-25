@@ -16,11 +16,6 @@ var teamSchema = mongoose.Schema({
     }
 })
 
-//Export the teams module
-var teams = module.exports = mongoose.model('teams', teamSchema);
 
-//Get all the team from mongo
-
-module.exports.getTeams = function(callback, limit){
-    teams.find(callback).limit(limit);
-}
+//Export the teams collection
+module.exports = mongoose.model('teams', teamSchema);

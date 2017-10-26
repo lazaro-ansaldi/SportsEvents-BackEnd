@@ -7,4 +7,10 @@ router.get('/', teamController.teams_list);
 
 router.get('/find/:id', teamController.getOneById);
 
+router.post('/insert/', teamController.upsert);
+
+router.post('/update/', teamController.upsert);
+
+router.delete('/delete/:id', teamController.deleteOneById);
+
 module.exports = router;

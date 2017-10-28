@@ -1,16 +1,17 @@
-var Teams = require('../models/teamModel');
+const Teams = require('../models/teamModel');
+const log = require('../logger/log');
 
 exports.teams_list = function(req, res){
     
     Teams.find(function(err, teams) {
-        if(err) console.log(err);
+        if(err) log.logError(err);
         res.send(teams);
       });
 };
 
 exports.getOneById = (function(req, res){
     Teams.findOne({'_id' : req.params.id}, function(err, team){
-        if(err) console.log(err);
+        if(err) log.logError(err);
         res.send(team);
     })
 });
@@ -23,7 +24,7 @@ exports.upsert = (function(req, res){
             createDate: req.body.createDate},
         {upsert : true},
         function(err, data){
-            if(err) { console.log(err);}
+            if(err) { log.logError(err);}
             else {res.sendStatus(201);}
         }
     );
@@ -32,21 +33,21 @@ exports.upsert = (function(req, res){
 
 exports.addTeam = (function(req, res){
     Teams.create(req.body, function(err, data){
-        if (err) console.log(err);
+        if (err) log.logError(err);
         res.sendStatus(201);
     });
 })
 
 exports.deleteOneById = (function(req, res){
     Teams.findByIdAndRemove(req.params.id, function(err, data){
-        if(err) {console.log(err);}
+        if(err) {log.logError(err);}
             else {res.sendStatus(200);}
     });
 })
 
 exports.updateById = (function(req, res){
     Teams.update({_id:req.body._id}, req.body, {upsert:true}, function(err, data){
-        if(err) {console.log(err);}
+        if(err) {log.logError(err);}
         else {res.sendStatus(200);}
     })
 })

@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var teamController = require('../controllers/teamController');
+const teamController = require('../controllers/teamController');
 
 //ToDo: use the "upsert" method from controller to update/insert objects
 router.get('/', teamController.teams_list);

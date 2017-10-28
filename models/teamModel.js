@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 
 //Define the collection schema
 var teamSchema = mongoose.Schema({
+    id:{
+        type: String,
+        auto: true
+    },
     name:{
         type: String,
         required: true
@@ -16,11 +20,6 @@ var teamSchema = mongoose.Schema({
     }
 })
 
-//Export the teams module
-var teams = module.exports = mongoose.model('teams', teamSchema);
 
-//Get all the team from mongo
-
-module.exports.getTeams = function(callback, limit){
-    teams.find(callback).limit(limit);
-}
+//Export the teams collection
+module.exports = mongoose.model('teams', teamSchema);

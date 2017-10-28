@@ -43,3 +43,10 @@ exports.deleteOneById = (function(req, res){
             else {res.sendStatus(200);}
     });
 })
+
+exports.updateById = (function(req, res){
+    Teams.update({_id:req.body._id}, req.body, {upsert:true}, function(err, data){
+        if(err) {console.log(err);}
+        else {res.sendStatus(200);}
+    })
+})

@@ -10,7 +10,7 @@ router.get('/find/:id', teamController.getOneById);
 
 router.post('/insert', teamController.addTeam);
 
-router.post('/update', teamController.upsert);
+router.post('/update', teamController.updateById);
 
 router.delete('/delete/:id', teamController.deleteOneById);
 

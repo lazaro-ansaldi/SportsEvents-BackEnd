@@ -1,4 +1,4 @@
-var Teams = require('../models/teamModel') 
+var Teams = require('../models/teamModel');
 
 exports.teams_list = function(req, res){
     
@@ -16,18 +16,30 @@ exports.getOneById = (function(req, res){
 });
 
 exports.upsert = (function(req, res){
-    teams.findOneAndUpdate(
-        {'_id:' : req.params.id},
+    debugger;
+    Teams.findOneAndUpdate(
         {name: req.body.name, 
             shortName: req.body.shortName, 
             createDate: req.body.createDate},
-        {upsert : true, new : true},
+        {upsert : true},
         function(err, data){
-            if(err) console.log(err);
+            if(err) { console.log(err);}
+            else {res.sendStatus(201);}
         }
-    )
+    );
+    res.status(201);
 });
 
-exports.deleteById = (function(req, res){
-    teams.findByIdAndRemove(req.params.id);
+exports.addTeam = (function(req, res){
+    Teams.create(req.body, function(err, data){
+        if (err) console.log(err);
+        res.sendStatus(201);
+    });
+})
+
+exports.deleteOneById = (function(req, res){
+    Teams.findByIdAndRemove(req.params.id, function(err, data){
+        if(err) {console.log(err);}
+            else {res.sendStatus(200);}
+    });
 })

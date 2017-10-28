@@ -1,13 +1,13 @@
-var express = require('express');
-var app = express();
-var dbConection = require('./db/connection');
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const dbConection = require('./db/connection');
+const bodyParser = require('body-parser');
 
-var teamsRouter = require('./routers/teamRouter');
-var appLogger = require('./logger/log');
+const teamsRouter = require('./routers/teamRouter');
+const appLogger = require('./logger/log');
 
 appLogger.logInfo("***Starting application...");
-let port = 2000;
+const port = 2000;
 //Connect to db once
 
 appLogger.logInfo("Trying connecto to mongoDb");

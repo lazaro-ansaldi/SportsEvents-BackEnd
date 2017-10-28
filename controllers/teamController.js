@@ -1,5 +1,5 @@
-var Teams = require('../models/teamModel');
-var log = require('../logger/log');
+const Teams = require('../models/teamModel');
+const log = require('../logger/log');
 
 exports.teams_list = function(req, res){
     

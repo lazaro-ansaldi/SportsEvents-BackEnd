@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //Define the collection schema
 var teamSchema = mongoose.Schema({

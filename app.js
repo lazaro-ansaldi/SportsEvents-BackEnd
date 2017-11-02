@@ -2,25 +2,29 @@ const express = require('express');
 const app = express();
 const dbConection = require('./db/connection');
 const bodyParser = require('body-parser');
+const appLogger = require('./logger/log');
 
 const teamsRouter = require('./routers/teamRouter');
-const appLogger = require('./logger/log');
+const matchRouter = require("./routers/matchRouter");
 
 appLogger.logInfo("***Starting application...");
 const port = 2000;
-//Connect to db once
+
+// Body parser config
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 appLogger.logInfo("Trying connecto to mongoDb");
+
+//Connect to db once
 dbConection.Connection;
 appLogger.logInfo("Connection succes!");
 
-app.use(bodyParser.json());
-
-app.get("/", function(req, res){
-    res.send("Home Page");
-})
-
+//Routes cofiguration
 app.use('/teams', teamsRouter);
+app.use('/matches', matchRouter);
 
-app.listen(port);
-appLogger.logInfo("App running on port:" + port);
+app.listen(port, () => {
+    appLogger.logInfo("App running on port: " + port);
+});
+

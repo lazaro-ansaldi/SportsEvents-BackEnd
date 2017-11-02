@@ -22,7 +22,7 @@ appLogger.logInfo("Connection succes!");
 
 //Routes cofiguration
 app.use('/teams', teamsRouter);
-//app.use('/matches', matchRouter);
+app.use('/matches', matchRouter);
 
 app.listen(port, () => {
     appLogger.logInfo("App running on port: " + port);

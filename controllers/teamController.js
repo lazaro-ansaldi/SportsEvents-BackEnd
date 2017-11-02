@@ -30,7 +30,7 @@ exports.getOneById = (function(req, res){
     })
 });
 
-exports.upsert = (function(req, res){
+exports.upsertById = (function(req, res){
     Team.findOneAndUpdate(
         {_id:req.body._id},
         req.body,
@@ -48,7 +48,7 @@ exports.upsert = (function(req, res){
     );
 });
 
-exports.deleteOneById = (function(req, res){
+exports.deleteById = (function(req, res){
     Team.findByIdAndRemove(req.params.id, function(err, data){
         if(err) {
             log.logError(err);

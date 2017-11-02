@@ -7,8 +7,8 @@ router.get('/', teamController.teams_list);
 
 router.get('/:id', teamController.getOneById);
 
-router.put('/', teamController.upsert);
+router.put('/', teamController.upsertById);
 
-router.delete('/:id', teamController.deleteOneById);
+router.delete('/:id', teamController.deleteById);
 
 module.exports = router;

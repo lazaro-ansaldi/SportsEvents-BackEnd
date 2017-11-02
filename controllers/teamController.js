@@ -33,6 +33,7 @@ exports.getOneById = (function(req, res){
 exports.upsert = (function(req, res){
     debugger;
     Team.findOneAndUpdate(
+        {_id:req.body._id},
         {name: req.body.name, 
             shortName: req.body.shortName, 
             createDate: req.body.createDate},
@@ -42,21 +43,13 @@ exports.upsert = (function(req, res){
                 log.logError(err);
                 res.sendStatus(501);
             }
-            else {res.sendStatus(201);}
+            else {
+                log.logInfo("Team: " + req.body._id + " correctly updated!");
+                res.sendStatus(200);
+            }
         }
     );
-    res.status(201);
 });
-
-exports.addTeam = (function(req, res){
-    Team.create(req.body, function(err, data){
-        if (err) {
-            log.logError(err);
-            res.sendStatus(501);
-        }
-        res.sendStatus(201);
-    });
-})
 
 exports.deleteOneById = (function(req, res){
     Team.findByIdAndRemove(req.params.id, function(err, data){
@@ -65,6 +58,16 @@ exports.deleteOneById = (function(req, res){
             res.sendStatus(501);
         }
             else {res.sendStatus(200);}
+    });
+})
+
+exports.addTeam = (function(req, res){
+    Team.create(req.body, function(err, data){
+        if (err) {
+            log.logError(err);
+            res.sendStatus(501);
+        }
+        res.sendStatus(201);
     });
 })
 

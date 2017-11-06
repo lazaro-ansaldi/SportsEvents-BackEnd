@@ -14,8 +14,8 @@ exports.addMatch = (function(req, res){
 });
 
 exports.upsertById = (function(req, res){
-    Match.findOneAndUpdate(
-        {_id:req.body._id}, req.body, {upsert:true},
+    Match.findByIdAndUpdate(
+        req.body._id, req.body, {upsert:true},
         function(err, data){
         if(err){
             log.logError(err);
@@ -26,8 +26,8 @@ exports.upsertById = (function(req, res){
     })
 });
 
-exports.getById = (function(req, res){
-    Match.findOne({'_id' : req.params.id}, function(err, match){
+exports.getOneById = (function(req, res){
+    Match.findById(req.params.id, function(err, match){
         if(err) {
             log.logError(err);
             res.sendStatus(501);
@@ -64,7 +64,6 @@ exports.getByStatus = (function(req, res){
 });
 
 exports.matches_list = (function(req, res){
-
     Match.find(function(err, matches) {
         if(err) {
             log.logError(err);

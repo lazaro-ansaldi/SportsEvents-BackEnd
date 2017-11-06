@@ -4,7 +4,8 @@ const router = express.Router();
 const matchController = require('../controllers/matchController');
 
  router.get('/', matchController.matches_list);
- router.get('/:id', matchController.getById);
+ 
+ router.get('/:id', matchController.getOneById);
 
  router.put('/', matchController.upsertById);
 

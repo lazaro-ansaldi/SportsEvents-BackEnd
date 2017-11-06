@@ -14,7 +14,7 @@ const port = 2000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-appLogger.logInfo("Trying connecto to mongoDb");
+appLogger.logInfo("Trying connect to mongoDb");
 
 //Connect to db once
 dbConection.Connection;

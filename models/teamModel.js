@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 //Define the collection schema
 var teamSchema = mongoose.Schema({
     id:{
-        type: String,
+        type: mongoose.Schema.ObjectId,
         auto: true
     },
     name:{

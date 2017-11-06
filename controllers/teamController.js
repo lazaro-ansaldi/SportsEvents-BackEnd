@@ -2,7 +2,6 @@ const Team = require('../models/teamModel');
 const log = require('../logger/log');
 
 exports.teams_list = function(req, res){
-    
     Team.find(function(err, teams) {
         if(err) {
             log.logError(err);
@@ -14,7 +13,7 @@ exports.teams_list = function(req, res){
 };
 
 exports.getOneById = (function(req, res){
-    Team.findOne({'_id' : req.params.id}, function(err, team){
+    Team.findOne({id:req.params.id}, function(err, team){
         if(err) {
             log.logError(err);
             res.sendStatus(501);
@@ -24,6 +23,7 @@ exports.getOneById = (function(req, res){
                 res.send(team);
             }
             else{
+                console.log(req.params.id)
                 res.sendStatus(404);
             }
         }
@@ -31,8 +31,8 @@ exports.getOneById = (function(req, res){
 });
 
 exports.upsertById = (function(req, res){
-    Team.findOneAndUpdate(
-        {_id:req.body._id},
+    Team.findByIdAndUpdate(
+        req.body.id,
         req.body,
         {upsert : true},
         function(err, data){
@@ -58,22 +58,3 @@ exports.deleteById = (function(req, res){
     });
 });
 
-exports.addTeam = (function(req, res){
-    Team.create(req.body, function(err, data){
-        if (err) {
-            log.logError(err);
-            res.sendStatus(501);
-        }
-        res.sendStatus(201);
-    });
-});
-
-exports.updateById = (function(req, res){
-    Team.update({_id:req.body._id}, req.body, {upsert:true}, function(err, data){
-        if(err) {
-            log.logError(err);
-            res.sendStatus(501);
-        }
-        else {res.sendStatus(200);}
-    })
-});

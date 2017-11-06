@@ -4,12 +4,13 @@ const maxTeamsPerMatch = 2;
 //Define the collection schema
 var matchSchema = mongoose.Schema({
     id:{
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
     startDate:{
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     status:{
         type: String,

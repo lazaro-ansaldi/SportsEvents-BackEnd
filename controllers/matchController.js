@@ -63,4 +63,16 @@ exports.getByStatus = (function(req, res){
     })
 });
 
+exports.matches_list = (function(req, res){
+
+    Match.find(function(err, matches) {
+        if(err) {
+            log.logError(err);
+            res.sendStatus(501);
+        }else{
+        res.send(matches);
+        }
+      });
+});
+
 

@@ -14,6 +14,7 @@ var matchSchema = mongoose.Schema({
     },
     status:{
         type: String,
+        enum: ["Not Started", "In Progress", "Finished"],
         default: "Not Started"
     },
     teams:[

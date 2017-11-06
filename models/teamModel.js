@@ -18,7 +18,7 @@ var teamSchema = mongoose.Schema({
         type: String,
         required: false
     }
-})
+});
 
 
 //Export the teams collection

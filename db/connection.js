@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 
-module.exports = Connection = mongoose.connect('mongodb://localhost/sports', {
+const dbName = "sportsdb";
+const host = "mongodb://localhost";
+
+//Exports the db connection
+module.exports = Connection = mongoose.connect(host + '/' + dbName, {
     useMongoClient:true
 });

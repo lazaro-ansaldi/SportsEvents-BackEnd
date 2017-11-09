@@ -2,7 +2,7 @@ const Team = require('../models/teamModel');
 const log = require('../logger/log');
 const mongoose = require('mongoose');
 
-exports.teams_list = function(req, res){
+exports.teams_list = (function(req, res){
     Team.find(function(err, teams) {
         if(err) {
             log.logError(err);
@@ -11,7 +11,7 @@ exports.teams_list = function(req, res){
         res.send(teams);
         }
       });
-};
+});
 
 exports.getOneById = (function(req, res){
     Team.findById(req.params.id, function(err, team){
@@ -33,7 +33,6 @@ exports.getOneById = (function(req, res){
 
 exports.upsertById = (function(req, res){
     if(!req.body._id) req.body._id = new mongoose.mongo.ObjectID();
-    log.logInfo("Team: " + req.body._id + " correctly updated!");
     Team.findByIdAndUpdate(
         req.body._id,
         req.body,

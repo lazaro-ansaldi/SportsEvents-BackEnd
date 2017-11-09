@@ -1,6 +1,7 @@
 const Team = require('../models/teamModel');
 const Match = require('../models/matchModel');
 const log = require('../logger/log');
+const mongoose = require('mongoose');
 
 exports.addMatch = (function(req, res){
     Match.create(req.body, function(err, result){
@@ -14,8 +15,12 @@ exports.addMatch = (function(req, res){
 });
 
 exports.upsertById = (function(req, res){
+    if(!req.body._id) req.body._id = new mongoose.mongo.ObjectID();
+
     Match.findByIdAndUpdate(
-        req.body._id, req.body, {upsert:true},
+        req.body._id, 
+        req.body, 
+        {upsert:true},
         function(err, data){
         if(err){
             log.logError(err);

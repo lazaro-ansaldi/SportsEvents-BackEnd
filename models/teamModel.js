@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 //Define the collection schema
 var teamSchema = mongoose.Schema({
-    id:{
-        type: mongoose.Schema.ObjectId,
-        auto: true
-    },
     name:{
         type: String,
         required: true

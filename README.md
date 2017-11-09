@@ -1,9 +1,9 @@
 # SportsEvents-BackEnd
 
-##Application Contract
+## Application Contract
 
 
-###Teams###
+### Teams 
 
 [GET]
 **/teams/**
@@ -23,7 +23,7 @@ If the team is new insert to DB, else update it by _id
 Delete one team by _id
 
 
-###Matches###
+### Matches
 
 [GET]
 **/matches/:id**

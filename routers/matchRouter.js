@@ -11,6 +11,4 @@ const matchController = require('../controllers/matchController');
 
  router.delete('/:id', matchController.deleteById);
 
- router.get('/status/:status', matchController.getByStatus);
-
 module.exports = router;

@@ -15,6 +15,7 @@ exports.addMatch = (function(req, res){
 });
 
 exports.upsertById = (function(req, res){
+    console.log(req.body._id);
     if(!req.body._id) req.body._id = new mongoose.mongo.ObjectID();
 
     Match.findByIdAndUpdate(
@@ -58,18 +59,11 @@ exports.deleteById = (function(req, res){
     });
 });
 
-exports.getByStatus = (function(req, res){
-    Match.findOne({status : req.params.status}, function(err, matches){
-        if(err){
-            log.logError(err);
-            res.sendStatus(501);
-        }
-        res.send(matches);
-    })
-});
-
 exports.matches_list = (function(req, res){
-    Match.find(function(err, matches) {
+    let queryObject = getQuery(req);
+
+    Match.find(queryObject, 
+        function(err, matches) {
         if(err) {
             log.logError(err);
             res.sendStatus(501);
@@ -78,5 +72,16 @@ exports.matches_list = (function(req, res){
         }
       });
 });
+
+function getQuery(req){
+    let inProgress = (req.query.inProgress === 'true');
+
+    let matchFilter = {};
+    if(inProgress) matchFilter={status: 'In Progress'};
+
+    console.log(inProgress);
+    console.log(matchFilter);
+    return matchFilter;
+}
 
 

@@ -46,7 +46,10 @@ exports.getOneById = (function(req, res){
                 res.sendStatus(404);
             }
         }
-    })
+    }).populate('teams')
+    .exec(function(err, data){
+        if(err) log.logError(err);            
+    });
 });
 
 exports.deleteById = (function(req, res){

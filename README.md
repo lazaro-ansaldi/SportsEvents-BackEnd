@@ -34,8 +34,8 @@ Find and return one match as JSON
 
 [GET]  
 **/matchs/**  
-*Param: inProgress:bool filter or not only "In Progress" matchs.*    
-*Param: populate:bool populate or not teams data into match object.*  
+*Param: inProgress=bool filter or not only "In Progress" matchs.*    
+*Param: populate=bool populate or not teams data into match object.*  
 Return matches collection for a specific status  
 
 [PUT]  

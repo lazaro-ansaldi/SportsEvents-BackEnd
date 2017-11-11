@@ -2,6 +2,10 @@
 
 ## Application Contract
 
+### Headers
+{  
+    Content-Type: "application/json"  
+}  
 
 ### Teams 
 
@@ -15,7 +19,6 @@ Find and return one team as JSON
 
 [PUT]  
 **/teams/**  
-*Content-Type: "application/json"*  
 If the team is new insert to DB, else update it by _id  
 
 [DELETE]  
@@ -35,8 +38,7 @@ Find and return one match as JSON
 Return matches collection for a specific status  
 
 [PUT]  
-**/matchs/**  
-*Content-Type: "application/json"*  
+**/matchs/**   
 If the match is new insert to DB, else update it by _id  
 
 [DELETE]  

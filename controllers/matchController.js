@@ -15,6 +15,7 @@ exports.addMatch = (function(req, res){
 });
 
 exports.upsertById = (function(req, res){
+    console.log(req.body._id);
     if(!req.body._id) req.body._id = new mongoose.mongo.ObjectID();
 
     Match.findByIdAndUpdate(
@@ -45,7 +46,10 @@ exports.getOneById = (function(req, res){
                 res.sendStatus(404);
             }
         }
-    })
+    }).populate('teams')
+    .exec(function(err, data){
+        if(err) log.logError(err);            
+    });
 });
 
 exports.deleteById = (function(req, res){
@@ -58,18 +62,10 @@ exports.deleteById = (function(req, res){
     });
 });
 
-exports.getByStatus = (function(req, res){
-    Match.findOne({status : req.params.status}, function(err, matches){
-        if(err){
-            log.logError(err);
-            res.sendStatus(501);
-        }
-        res.send(matches);
-    })
-});
-
 exports.matches_list = (function(req, res){
-    Match.find(function(err, matches) {
+    let query = getQuery(req);
+
+    query.exec(function(err, matches) {
         if(err) {
             log.logError(err);
             res.sendStatus(501);
@@ -78,5 +74,20 @@ exports.matches_list = (function(req, res){
         }
       });
 });
+
+function getQuery(req){
+    
+    const inProgress = (req.query.inProgress === 'true');
+    const populateTeams = (req.query.populate === 'true');
+    
+    let matchFilter = {};
+    if(inProgress) matchFilter={status: 'In Progress'};
+
+    let query = Match.find(matchFilter);
+
+    if(populateTeams) query.populate('teams');
+
+    return query;
+}
 
 

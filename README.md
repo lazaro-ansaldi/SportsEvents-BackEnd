@@ -2,44 +2,48 @@
 
 ## Application Contract
 
+### Headers
+{  
+    Content-Type: "application/json"  
+}  
 
 ### Teams 
 
-[GET]
-**/teams/**
-Return all the teams collection as JSON
+[GET]  
+**/teams/**  
+Return all the teams collection as JSON  
 
-[GET]
-**/teams/:id**
-Find and return one team as JSON
+[GET]  
+**/teams/:id**  
+Find and return one team as JSON  
 
-[PUT]
-**/teams/**
-*Content-Type: "application/json"*
-If the team is new insert to DB, else update it by _id
+[PUT]  
+**/teams/**  
+If the team is new insert to DB, else update it by _id  
 
-[DELETE]
-**/teams/:id**
-Delete one team by _id
+[DELETE]  
+**/teams/:id**  
+Delete one team by _id  
 
 
-### Matches
+### Matchs  
+    
+[GET]  
+**/matchs/:id**  
+Find and return one match as JSON  
 
-[GET]
-**/matches/:id**
-Find and return one match as JSON
+[GET]  
+**/matchs/**  
+*Param: inProgress:bool filter or not only "In Progress" matchs.*    
+*Param: populate:bool populate or not teams data into match object.*  
+Return matches collection for a specific status  
 
-[GET]
-**/matches/:status**
-Find a matches collection for a specific status
+[PUT]  
+**/matchs/**   
+If the match is new insert to DB, else update it by _id  
 
-[PUT]
-**/matches/**
-*Content-Type: "application/json"*
-If the matche is new insert to DB, else update it by _id
-
-[DELETE]
-**/matches/:id**
-Delete one match by _id
+[DELETE]  
+**/matchs/:id**  
+Delete one match by _id  
 
 

@@ -60,10 +60,9 @@ exports.deleteById = (function(req, res){
 });
 
 exports.matches_list = (function(req, res){
-    let queryObject = getQuery(req);
+    let query = getQuery(req);
 
-    Match.find(queryObject, 
-        function(err, matches) {
+    query.exec(function(err, matches) {
         if(err) {
             log.logError(err);
             res.sendStatus(501);
@@ -74,14 +73,18 @@ exports.matches_list = (function(req, res){
 });
 
 function getQuery(req){
-    let inProgress = (req.query.inProgress === 'true');
-
+    
+    const inProgress = (req.query.inProgress === 'true');
+    const populateTeams = (req.query.populate === 'true');
+    
     let matchFilter = {};
     if(inProgress) matchFilter={status: 'In Progress'};
 
-    console.log(inProgress);
-    console.log(matchFilter);
-    return matchFilter;
+    let query = Match.find(matchFilter);
+
+    if(populateTeams) query.populate('teams');
+
+    return query;
 }
 
 

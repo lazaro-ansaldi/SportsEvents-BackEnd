@@ -15,7 +15,7 @@ exports.eventsByTeamId = (function(req, res){
 });
 
 exports.addEvent = (function(req, res){
-    Event.create(req.body, function(error, result){
+    Event.create(req.body, function(err, result){
         if(err) {
             log.logError(err);
             res.sendStatus(501);

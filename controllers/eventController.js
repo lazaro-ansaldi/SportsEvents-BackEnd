@@ -21,7 +21,7 @@ exports.addEvent = (function(req, res){
             log.logError(err);
             res.sendStatus(501);
         }else{
-        res.send(201);
+        res.sendStatus(201);
         }
     });
 });

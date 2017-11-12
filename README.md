@@ -2,6 +2,9 @@
 
 ## Application Contract
 
+### Root Host  
+http://localhost:PORT/
+
 ### Headers
 {  
     Content-Type: "application/json"  

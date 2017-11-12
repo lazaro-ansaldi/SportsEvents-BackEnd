@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-//Define the collection schema
 var eventSchema = mongoose.Schema({
     createDate:{
         type: Date,

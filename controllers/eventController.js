@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 
 exports.eventsByTeamId = (function(req, res){
     Event.find({match:req.params.matchId},
-        function(err, teams) {
+        function(err, event) {
         if(err) {
             log.logError(err);
             res.sendStatus(501);
         }else{
-        res.send(teams);
+        if(!event) {res.sendStatus(404);}
+        res.send(event);
         }
       });
 });
@@ -20,7 +21,7 @@ exports.addEvent = (function(req, res){
             log.logError(err);
             res.sendStatus(501);
         }else{
-        res.send(teams);
+        res.send(201);
         }
     });
 });

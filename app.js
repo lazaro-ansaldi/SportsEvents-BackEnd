@@ -6,6 +6,7 @@ const appLogger = require('./logger/log');
 
 const teamsRouter = require('./routers/teamRouter');
 const matchRouter = require("./routers/matchRouter");
+const eventRouter = require("./routers/eventRouter");
 
 appLogger.logInfo("***Starting application...");
 const port = 2000;
@@ -23,6 +24,7 @@ appLogger.logInfo("Connection succes!");
 //Routes cofiguration
 app.use('/teams', teamsRouter);
 app.use('/matchs', matchRouter);
+app.use('/events', eventRouter)
 
 app.listen(port, () => {
     appLogger.logInfo("App running on port: " + port);

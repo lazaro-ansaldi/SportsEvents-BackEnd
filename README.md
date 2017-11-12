@@ -2,8 +2,8 @@
 
 ## Application Contract
 
-### Root Host  
-http://localhost:PORT/
+### Root Host    
+http://localhost:PORT/  
 
 ### Headers
 {  

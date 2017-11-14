@@ -45,7 +45,7 @@ Delete one team by _id
 {    
     "_id": ObjectID,  
     "teams": [{},{}],  
-    "status": "Not Started",  
+    "status": ["Not Started", "In Progress", "Finished"],    
     "startDate": "12/11/2017"  
 }      
 
@@ -73,7 +73,7 @@ Delete one match by _id
 {  
     "_id": ObjectID,      
     "createDate":"12/11/2017",  
-    "eventType":"Start",  
+    "eventType": ["Start", "Finish", "Goal"],    
     "match":ObjectID  
 }         
 

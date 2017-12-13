@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/lazaro94/SportsEvents-BackEnd/issues"
   },
-  "homepage": "https://github.com/lazaro94/SportsEvents-BackEnd#readme"
+  "homepage": "https://github.com/lazaro94/SportsEvents-BackEnd#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
 }
